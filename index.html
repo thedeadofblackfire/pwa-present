@@ -1,0 +1,629 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Atelier Waigéo n°1</title>
+
+		<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<!--<link rel="stylesheet" href="css/theme/white.css">-->
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/dracula.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+		:root {
+		  --present-color-li: #36A0D9;
+		  }
+		  .reveal h2 {
+		  margin-bottom:30px;
+		  }
+		</style>
+		
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="#ffffff">				
+				<h1><img id="logox" src="img/logo_atelier.png" width="50%" class="plain" /></h1>
+					<!--<h1><img id="logo" src="img/stencil-logo.svg" /></h1>-->
+					<h4 id="lead-text" style="color:#36A0D9;">Les Web Components</h4>
+					<br/>
+					<h6>Atelier Waigéo N°1<br/>25 Mai 2018</h6>
+					<aside class="notes">
+					Le futur c'est maintenant avec les composants web natifs
+					</aside>
+				</section>
+				<section>
+					<h2>Sommaire</h2>
+					<ul>
+						<li>Présentation des Web Components</li>
+						<li>Introduction à Stencil</li>
+						<li>Stencil API</li>
+						<li>Demo</li>
+						<li>Ressources</li>
+					</ul>
+				</section>
+				<section>		
+					<h2>Prélude</h2>
+					<h5 style="color:gray">Building UI at Enterprise Scale with Web Components by EA Sports</h5>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/FJ2KEvzlyo4" frameborder="0" allowfullscreen></iframe>
+					<aside class="notes">
+					Cette présentation est plus une prise de conscience de l'impact des web components sur le développement web d'aujourd'hui et surtout de demain.
+					Pour comprendre les bénéfices de cette technologie dans le milieu professionnel, il n'y a qu'une seule vidéo à voir, un must have, même si cela utilise une autre technologie que celle que je vais décrire dans la deuxième partie 
+					Cas d'utilisation en entreprise par EA Sports (polymer)
+					</aside>
+				</section>
+				<section>
+					<h2>Web Components</h2>
+					<ul>
+						<li>Composants JavaScript normalisés pris en charge de manière native</li>
+						<li>S'exécute dans n'importe quel framework ou par son propre chef</li>
+						<li>Répond au problème des composants partagés</li>
+						<li>Propulsé par la spécification Custom Elements v1</li>
+					</ul>
+					<aside class="notes">
+						Les Web Components est une suite de technologies connectées permettant de créer des éléments personnalisés réutilisables - avec leurs fonctionnalités encapsulées à l'écart du reste de votre code pour les utiliser dans vos applications Web.
+						
+						<br/>L'essentiel des discussions a tourné autour du DOM fantôme (shadow DOM), mais la technologie qui apportera sans doute le plus de transformations est ce qu'on appelle les custom elements (les éléments personnalisés), une méthode vous permettant de définir vos propres éléments, avec leurs comportements et propriétés.
+					</aside>
+				</section>
+				<section>
+					<!--<h2>Web Components (2)</h2>-->
+					<h2>4 technologies<br/>représentent<br/>les Web Components</h2>
+					<ul>						
+						<li>Custom Elements</li>
+						<li>Shadow DOM</li>
+						<li>HTML Templates</li>
+						<li>HTML Imports</li>
+					</ul>
+					<aside class="notes">
+					    4 technologies normées derrière ce nom							
+					</aside>
+				</section>
+				<section>
+					<h2>Custom Elements</h2>
+					<p>Crée des éléments personnalisés qui encapsulent vos fonctionnalités sur une page HTML</p>
+					<h5 style="color:gray">vs</h5>
+					<p>Se contenter de spaghettis à la sauce balises HTML définissant vos fonctionnalités</p>
+					<aside class="notes">
+					L'un des aspects les plus importants des composants web est la possibilité de créer des éléments personnalisés qui encapsulent correctement vos fonctionnalités sur une page HTML, plutôt que de devoir se contenter d'une soupe de balises définissant des fonctionnalités personnalisées.
+					<br/>Cette technologie vous permet de définir vos propres éléments, avec leurs comportements et propriétés, émettant ou réagissant à des événements personnalisés à travers la page
+					</aside>
+				</section>
+				<section>
+					<h2>Shadow DOM</h2>
+					<p>permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component afin que ces éléments soient séparés du DOM du document principal</p>
+					<aside class="notes">
+						Le Shadow DOM ou DOM fantôme permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component. Le Shadow DOM fait en sorte que ces éléments soit séparés du DOM du document principal. 
+						<br/>Le Shadow DOM est utilisable seul, en dehors d'un Web component.
+						<br/>Pourquoi rechercher à séparer le code du reste de la page ? 
+						<br/>Une des raisons est que sur des sites de tailles importantes, par exemple, si le CSS n'est pas correctement organisé, les styles de certains composants peuvent impacter d'autres parties du site bien que ce ne soit pas prévu, et vice-versa. Quand un site ou une application grandit, ce genre de chose est difficile a éviter.
+					</aside>
+				</section>
+				<section>
+					<h2>HTML Templates</h2>
+					<p>met à disposition les éléments &lt;template&gt; et &lt;slot&gt; pour créer un modèle flexible de fragments de contenu, côté client, qui peut ensuite être utilisée pour remplir le shadow DOM d'un composant Web</p>
+					<p style="margin-top:40px">Au chargement de la page, le contenu de chaque balise &lt;template&gt; n'est pas affiché mais peut être instancié par la suite via JavaScript</p>
+					<aside class="notes">
+					L'élément HTML &lt;template&gt; (ou Template Content ou modèle de contenu) est un mécanisme utilisé pour stocker du contenu côté client et qui ne doit pas être affiché lors du chargement de la page mais qui peut être instancié par la suite via JavaScript.
+
+					Cet élément est un fragment de contenu mis de côté pour être utilisé par la suite dans le document. Lorsque le moteur traite le contenu de l'élément &lt;template&gt; lors du chargement de la page, il ne fait que vérifier la validité du contenu, ce dernier n'est pas affiché
+					</aside>
+				</section>
+				<section>
+					<h2>HTML Imports</h2>
+					<p>est conçue à l'origine pour être le mécanisme d'empaquetage des composants Web</p>
+					<p style="margin-top:40px">Mais est également utilisée pour importer un fichier HTML seul en utilisant une balise &lt;link&gt;</p>
+					<pre><code data-trim data-noescape class="html">
+&lt;link rel="import" href="myfile.html" /&gt;
+</code></pre>
+					<aside class="notes">
+					Les importations HTML sont conçues pour être le mécanisme de packaging des composants Web, mais vous pouvez également utiliser les importations HTML seules.
+					HTML imports est un peu particulier car toujours en état Working Draft et est un peu controversé par certains grandes entreprises.
+					Vous importez un fichier HTML en utilisant une balise link dans un document HTML comme celui-ci
+					</aside>
+				</section>
+				<section>
+					<h2>Navigateurs compatibles</h2>
+					<ul>
+						<li>Support natif : Chrome, Safari, Opéra</li>
+						<li>Scripts polyfills performant</i>
+						<li>Firefox très proche (version 60/61)</li>
+					</ul>
+					<img src="img/browser.png" width="70%" class="plain" />
+					<aside class="notes">
+						Support de navigateurs natifs en desktop et en mobile : Safari (et oui!)
+						<br/>Des scripts polyfills performant sont disponible pour rendre les autres principaux navigateurs pleinement compatibles (IE 11)
+						<br/>Firefox en est très proche, activable via un flag dev et prévu par défaut dans la version de production 60/61
+						<br/>et le mauvais élève reste IE
+					</aside>
+				</section>
+				<section>
+					<h2>Exemple de Custom Element</h2>
+					<pre><code data-trim data-noescape class="html">
+&lt;my-component size="large" theme="light"/&gt;&lt;/my-component&gt;
+					</code></pre>
+				</section>
+				<section>
+					<h2>Exemple de Custom Element</h2>
+					<pre><code data-trim data-noescape class="typescript">
+class MyComponent extends HTMLElement {
+	createdCallback() {
+		// Standard DOM/fetch/etc. code...
+	}
+	attachedCallback() {}
+	detachedCallback() {}
+	attributeChangedCallback() {}
+}
+
+document.registerElement('my-component', MyComponent);
+					</code></pre>
+				</section>				
+				<section>
+					<h2>Pouvons-nous rendre plus facile la construction d'éléments personnalisés ?</h2>
+					<ul>
+						<li>Souhait de continuer à utiliser des fonctionnalités que seul les frameworks proposent</li>
+						<li>Désir de gérer facilement des bundles de composants</li>
+						<li>Volonté d'utiliser un language typé comme TypeScript</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+						<li>Souhait de continuer à utiliser des fonctionnalités que seul les frameworks proposent</li>
+						<li>Désir de gérer facilement des bundles de composants par thématique</li>
+						<li>Beaucoup d'équipes ont choisi TypeScript pour unifier et typer leur développement Javascript à travers leurs équipes</li>
+					</ul>				
+					</aside>
+				</section>
+				<section data-background="#ffffff">
+					<h1><img id="logo" src="img/stencil-logo.svg" class="plain" /></h1>
+					<h4 id="lead-text">Un simple compilateur pour créer <br/>des Web Components rapide et réactif</h4>
+					<h5><a href="http://stenciljs.com/">stenciljs.com</a></h5>
+				</section>
+				<section>
+					<h2>Stencil ? Késako</h2>
+					<ul>
+						<li>Un <b style="color:var(--present-color-li);">compilateur</b> qui génère des Custom Elements, une partie de la spécification des composants Web</li>
+						<li style="margin-top:15px"><b style="color:var(--present-color-li);">Ce n'est pas un framework</b> : la sortie est 100% conforme aux normes Custom Elements</li>
+						<li style="margin-top:15px">Ajoute de <b style="color:var(--present-color-li);">puissantes fonctionnalités</b> venant du monde des frameworks aux Web Components</li>
+						<li style="margin-top:15px">Créé et utilisé par l'équipe derrière Ionic Framework. <b style="color:var(--present-color-li);">Ionic 4+</b> et ionicons sont construits dessus !</li>
+					</ul>
+					<aside class="notes">
+					Un compilateur qui génère des éléments personnalisés, partie intégrante de la spécification des Web Components.
+					<br/>Ajoute de puissantes fonctionnalités venant du monde des frameworks aux Web Components
+					</aside>
+				</section>
+				<section>
+					<h2>Pourquoi Stencil ?</h2>
+					<ul>
+						<li><b style="color:var(--present-color-li);">Performance</b> : les frameworks traditionnels s'avèrent trop lourds pour désservir une expérience mobile exigeante via des applications Web progressives (PWA)</li>
+						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Stabilité</b> : désir d'utiliser les standards Web et éviter les réécritures constantes lors d'un changement de framework</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Pourquoi Stencil ?</h2>
+					<ul>			
+						<li><b style="color:var(--present-color-li);">Interopérabilité</b> : capacité à créer des composants qui fonctionnent à l'identique à travers tous les principaux frameworks</li>
+						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Familiarité</b> : fonctionnalités prisées par les frameworks JS mais dans un package plus léger et conforme aux normes</li>
+					</ul>
+					<aside class="notes">
+					Le compilateur stencil n'est pas là pour remplacer l'utilisation de frameworks même si il capable de gérer un site ou une application professionnelle elle-même.
+					</aside>
+				</section>
+				<section>
+					<h2>Exemple d'un composant</h2>
+					<pre><code data-trim data-noescape class="typescript" style="min-height:480px">
+						import { Component, Prop } from '@stencil/core';
+
+						@Component({
+						  tag: 'my-name',
+						  styleUrl: 'my-name.scss'
+						})
+						export class MyName {
+						  @Prop() name: string;
+
+						  render() {
+						    return (
+						      &lt;p&gt;
+						        Hello, my name is {this.name}
+						      &lt;/p&gt;
+						    );
+						  }
+						}
+					</code></pre>	
+						<pre><code data-trim data-noescape class="html">
+&lt;my-name name="Ch'Big" /&gt;&lt;/my-name&gt;
+					</code></pre>
+					<aside class="notes">
+					La nomenclature est importante avec un dash dans le nom du composant pour le dissocier des balises HTML5
+					<br/>Stencil utilise le meilleur d'angular (la déclaration d'une classe et ses décorateurs sous typescript) et de react (JSX et système de rendu performant)
+					<br/> On peut directement utiliser un fichier css pour remplcer sass ou n'importe quel autre moteur et tiré profit des CSS variables
+					<br/> Utilisation dans votre fichier HTML ou dans un autre composant JSX
+					</aside>
+				</section>			
+				<section>
+					<h2>Les composants compilés par Stencil ont</h2>
+					<ul>
+						<li><b style="color:var(--present-color-li);">Virtual DOM</b> : mises à jour DOM rapides sans les pièges communs de performance DOM</li>
+						<li><b style="color:var(--present-color-li);">Lazy Loading</b> : par défaut, les composants sont chargés de manière asynchrone et peuvent être associés à d'autres composants</li>
+						<li><b style="color:var(--present-color-li);">Réactivité</b> : mises à jour efficaces basées sur les changements de propriété et d'état</li>
+					</ul>
+					<aside class="notes">
+					<ul>
+						<li><b>Virtual DOM</b> : fast DOM updates without common DOM performance pitfalls</li>
+						<li><b>Lazy Loading</b> (chargement paresseux) : By default components load asyncronously and can be bundled with related components</li>
+						<li><b>Réactivité</b> : Efficient updates based on property and state changes</li>
+					</ul>
+					</aside>
+				</section>
+				<section>
+					<h2>Les composants compilés par Stencil ont</h2>
+					<ul>
+						<li><b style="color:var(--present-color-li);">Rendu haute performance</b> : système de rendu asynchrone similaire à React Fiber</li>
+						<li><b style="color:var(--present-color-li);">JSX</b> : système de markup populaire et familier lancé par React</li>
+						<li><b style="color:var(--present-color-li);">Server Side Rendering</b> : hydratez les composants précompilés sur le serveur sans l'utilisation d'un navigateur sans tête (headless browser)</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li><b>High-performance Rendering</b> : async rendering system, similar to React Fiber</li>
+							<li><b>JSX</b> : Popular and familiar markup system pioneered by React</li>
+							<li><b>Server Side Rendering</b> : Hydrate pre-compiled components on the server without a headless browser : « navigateur sans tête »,  navigateur web sans interface graphique </li>
+						</ul>						
+					</aside>					
+				</section>
+				<section>
+				<h2>Les fonctionnalités<br/>des frameworks inclus</h2>
+				<table style="zoom:0.8; margin-bottom: 40px" class="table table-striped table-dark">
+    <thead>
+        <tr>
+        <th></th>
+        <th align="center">
+            <img src="img/angular-logo.png" width="100" class="plain no-margin" style="background:none;">
+        </th>
+        <th align="center">
+            <img src="img/react-logo.png" width="100" class="plain no-margin" style="background:none;">
+        </th>
+        <th align="center">
+            <img src="img/stencil-logo.png" width="100" class="plain no-margin" style="background:none;">
+        </th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>JSX / Virtual DOM</td>
+        <td align="center" style="background-color: #bc392a;">⨯</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+    </tr>
+    <tr>
+        <td>Async Rendering</td>
+        <td align="center" style="background-color: #bc392a;">⨯</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+    </tr>
+    <tr>
+        <td>TypeScript</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+        <td align="center" style="background-color: #bc392a;">⨯</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+    </tr>
+    <tr>
+        <td>Decorators</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+        <td align="center" style="background-color: #bc392a;">⨯</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+    </tr>
+    <tr>
+        <td>Server side rendering</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+        <td align="center" style="background-color: #32ac41;">✓</td>
+    </tr>
+    </tbody>
+    </table>
+				</section>
+				<section>
+					<h2>Stencil API - Cycle de vie</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">componentWillLoad()</b> : le composant est sur le point de charger et il n'a pas encore été rendu</li>
+						<li><b style="color:var(--present-color-li);">componentDidLoad()</b> : le composant a été chargé et a déjà été rendu</li>				
+						<li><b style="color:var(--present-color-li);">componentWillUpdate()</b> : le composant est sur le point d'être mis à jour et rendu.</li>
+						<li><b style="color:var(--present-color-li);">componentDidUpdate()</b> : le composant vient d'effectuer son rendu</li>
+						<li><b style="color:var(--present-color-li);">componentDidUnload()</b> : le composant a déchargé et l'élément sera détruit</li>
+					</ul>
+					<aside class="notes">
+					componentWillLoad : le composant est sur le point de charger et il n'a pas encore été rendu.   
+					<br/>C'est le meilleur endroit pour faire des mises à jour de données avant le premier rendu.   
+					<br/>componentWillLoad ne sera appelé qu'une seule fois.
+					
+					<br/><br/>componentDidLoad : le composant a été chargé et a déjà été rendu.
+					<br/>La mise à jour des données dans cette méthode provoquera le rendu du composant.
+					<br/>componentDidLoad ne sera appelé qu'une seule fois.
+					
+					<br/><br/>componentWillUpdate : le composant est sur le point d'être mis à jour et rendu.					
+					<br/>componentDidUpdate : Le composant vient de se re-rendre.
+					<br/>Appelé plusieurs fois tout au long de la vie du composant quand il se met à jour.
+					<br/>componentWillUpdate n'est pas appelé lors du premier rendu.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>
+						<li><b style="color:var(--present-color-li);">@Component()</b> : définir le nom du tag et la feuille de style associée (Sass ou plain CSS)					
+						<pre><code data-trim data-noescape class="typescript">
+						import { Component } from '@stencil/core';
+
+						@Component({
+						  tag: 'todo-list',
+						  styleUrl: 'todo-list.scss',
+						  host: {
+						    theme: 'todo',
+						    role: 'list'
+						  }
+						})
+						export class TodoList {
+						  ...
+						}
+						</code></pre>
+						</li>
+											
+					</ul>
+					<aside class="notes">
+					Chaque composant Stencil doit être décoré avec un décorateur @Component() du paquet @stencil/core. 
+					<br/>Dans le cas le plus simple, les développeurs doivent fournir un nom de balise HTML pour le composant. Souvent, un styleUrl est également utilisé, ou même styleUrls, où plusieurs feuilles de style différentes peuvent être fournies pour différents modes/thèmes d'application.
+					
+					<br/><br/>Le décorateur de composants a également une option hôte. Cela vous permet de définir des classes et des attributs CSS sur le composant que vous construisez.					
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>				
+						<li><b style="color:var(--present-color-li);">@Prop()</b> : créer une propriété sur le composant</li>
+						<li><b style="color:var(--present-color-li);">@State()</b> : créer un état local et le surveiller pour mettre à jour le rendu si détection d'un changement</li>						
+						<pre><code data-trim data-noescape class="typescript">
+						import { Prop, State } from '@stencil/core';
+						...
+						export class MyName {
+						
+						@Prop({ mutable: true }) name: string = 'oùestcharly';
+						
+						@State() completedTodos: Todo[];
+						...
+						</code></pre>						
+					</ul>
+					<aside class="notes">
+					Le décorateur @Prop() sont des attributs/propriétés exposés publiquement sur l'élément. Par défaut à chaque changement du décorateur, le composant est rendu de nouveau
+					<br/>Il est important de savoir que @Prop est par défaut immuable à l'intérieur de la logique du composant. 
+					<br/>Une fois qu'une valeur est définie par un utilisateur, le composant ne peut pas la mettre à jour en interne.
+					<br/>Cependant, il est possible d'autoriser explicitement la mutation suivante, comme dans l'exemple suivant:
+					<br/><br/>
+					Le décorateur @State() peut être utilisé pour gérer les données internes d'un composant. 
+					Cela signifie qu'un utilisateur ne peut pas modifier ces données de l'extérieur du composant, mais le composant peut le modifier comme il le souhaite. 
+					Toute modification apportée à une propriété @State () entraîne l'appel de la fonction de rendu des composants.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">@Method()</b> : exposer une méthode à l'api public
+						<pre><code data-trim data-noescape class="typescript">
+						import { Method } from '@stencil/core';
+
+						export class TodoList {
+
+						  @Method()
+						  showPrompt() {
+						    // show a prompt
+						  }
+						}
+						</code></pre>
+						On peut appeler cette méthode comme cela :
+						<pre><code data-trim data-noescape class="typescript">
+						const todoListElt = document.querySelector('todo-list');
+						todoListElt.showPrompt();
+						</code></pre>
+						</li>				
+					</ul>
+					<aside class="notes">
+					Le décorateur @Method() est utilisé pour exposer des méthodes sur l'API publique. Les fonctions décorées avec le décorateur @Method() peuvent être appelées directement depuis l'élément.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>								
+						<li><b style="color:var(--present-color-li);">@Watch()</b> : lorsqu'un utilisateur met à jour une propriété, ce décorateur lancera la méthode à laquelle elle est attachée et transmettra la nouvelle et l'ancienne valeur		
+						<pre><code data-trim data-noescape class="typescript">
+						import { Prop, Watch } from '@stencil/core';
+
+						export class LoadingIndicator {
+						  @Prop() activated: boolean;
+
+						  @Watch('activated')
+						  watchHandler(newValue: boolean, oldValue: boolean) {
+						    console.log('New value is: ', newValue);
+						  }
+						}
+						</code></pre>					
+						</li>				
+					</ul>
+					<aside class="notes">					
+					Pour faire la validation d'une propriété, vous pouvez utiliser le décorateur @Watch()
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>			
+						<li><b style="color:var(--present-color-li);">@Element()</b> : récupèrer l'élément DOM pour ce composant
+						<pre><code data-trim data-noescape class="typescript">
+						import { Element } from '@stencil/core';
+						
+						export class TodoList {
+
+						  @Element() todoListEl: HTMLElement;
+
+						  addClass(){
+						    this.todoListEl.classList.add('active');
+						  }
+						}
+						</code></pre>
+						</li>			
+					</ul>
+					<aside class="notes">
+					Le décorateur @Element() est comment avoir accès à l'élément host dans l'instance de classe. Cela renvoie une instance d'un HTMLElement, donc les méthodes / événements DOM standards peuvent être utilisés ici.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Evenements</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">@Event()</b> : déclencher des événements sur un composant
+						<pre><code data-trim data-noescape class="typescript">
+import { Event, EventEmitter } from '@stencil/core';
+
+...
+export class TodoList {
+
+  @Event() todoCompleted: EventEmitter;
+
+  todoCompletedHandler(todo: Todo) {
+    this.todoCompleted.emit(todo);
+  }
+}
+						</code></pre>
+						</li>			
+					</ul>
+					<aside class="notes">
+					Les composants peuvent émettre des données et des événements à l'aide du décorateur Event Emitter.
+					<br/><br/>Le code ci-dessus enverra un événement DOM personnalisé appelé todoCompleted.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Evenements</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">@Listen()</b> : écouter les événements envoyés par ses enfants
+						<pre><code data-trim data-noescape class="typescript">
+import { Listen } from '@stencil/core';
+
+...
+export class TodoApp {
+
+  @Listen('todoCompleted')
+  todoCompletedHandler(event: CustomEvent) {
+    console.log('Received todoCompleted event: ', event.detail);
+  }
+}
+						</code></pre>
+						</li>				
+					</ul>
+					<aside class="notes">
+					Le décorateur @Listen() permet de gérer les événements envoyés depuis @Events.
+					<br/><br/>Dans cet exemple, on suppose qu'un composant enfant, TodoList, émet un événement todoCompleted à l'aide de EventEmitter.
+					</aside>
+				</section>				
+				<section>
+					<h2>Stencil vs X</h2>
+					<ul>
+						<li><b style="color:var(--present-color-li);">Angular/React/Vue/...</b> : Stencil construit des composants Web standard qui s'exécutent nativement dans le navigateur.</li>
+						<li><b style="color:var(--present-color-li);">Polymer</b> : Stencil fonctionne à la compilation plutôt qu'à l'exécution. Pragmatique sur JSX, Virtual DOM et d'autres fonctionnalités des frameworks.</li>
+						<li><b style="color:var(--present-color-li);">Vanilla Web Components</b> : Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même.</li>
+					</ul>
+					<aside class="notes">
+					Comment Stencil est différent de X ?
+					<br/>Stencil fonctionne principalement à la compilation plutôt qu'à l'exécution. Produit des composants Web "vanilla". Pragmatique sur JSX, Virtual DOM et d'autres fonctionnalités des frameworks
+					<br/><br/>Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même dans des composants Web "vanilla".
+					</aside>
+				</section>				
+				<section>
+					<h2>Demo</h2>
+					<p>
+						<a href="demo_stencil.html">C'est parti !</a>
+					</p>
+					<aside class="notes">
+					Un composant n'est pas forcément lié à une interaction graphique, il peut faire un fetch d'une requete ou appeler une autre api (web share, web payment)
+					<br/>Il est existe aussi un bundle pour construire une appli PWA avec ionic & stencil avec un score de 100% sur lighthouse
+					</aside>
+				</section>						
+				<section data-background-iframe="https://stencil-fiber-demo.firebaseapp.com/perf.html" data-background-interactive>					
+					<aside class="notes">
+					The goal of this demo is to show smooth animations while at the same time updating 729 text nodes every second. Only one property is updated at the root node, which is then passed down through over 1,700 nodes every second. 
+					Additionally, user interactions, such as mouseenter and mouseleave, take precedence, yet should not interfer with animations and node updates. 
+					This demo was adopted from the React Fiber demo.	
+					</aside>
+				</section>					
+				<section>
+					<h2>SVGPaths Morphing</h2>
+					<iframe width="640" height="480" src="http://htmlpreview.github.io/?https://github.com/jepiqueau/stencil-svgpaths-morphing/blob/master/viewme/index1.html" frameborder="0" allowfullscreen style="background: #ffffff;"></iframe>				
+				</section>
+				<section>
+					<h2>Morphing UI</h2>
+					<table>
+					<tr>
+						<td width="50%" align=center><img src="img/motion-ui-sign-in.gif" width="90%" class="plain" /></td>
+						<td width="50%" align=center><img src="img/motion-ui-card.gif" width="90%" class="plain" /></td>
+					</tr>
+					</table>
+				</section>
+				<section>
+					<h2>Image comparison slider</h2>
+					<img  src="img/giphy.gif" width="75%" class="plain" />				
+				</section>
+				<section>
+					<a href="https://modemlooper.github.io/st-twitter/"><h2>Twitter component</h2></a>
+					<h5><a href="https://modemlooper.github.io/st-twitter/"></a></h5>
+					<iframe width="640" height="480" src="https://modemlooper.github.io/st-twitter/" frameborder="0" allowfullscreen style="background: #ffffff;"></iframe>				
+				</section>
+				<section>
+					<h2>Ressources</h2>
+					<ul>
+						<li><a href="http://stenciljs.com/">StencilJS.com</a></li>
+						<li><a href="https://github.com/ionic-team/stencil">github.com/ionic-team/stencil</a></li>
+						<li><a href="https://github.com/ionic-team/ionic-pwa-toolkit">github.com/ionic-team/ionic-pwa-toolkit</a></li>
+						<li><a href="https://stencilcomponents.com">Stencilcomponents.com</a></li>			
+						<li><a href="https://wc-todo.firebaseapp.com/">wc-todo.firebaseapp.com</a></li>					
+					</ul>
+				</section>
+				<section>
+					<h2>Ressources (DEMO)</h2>
+					<ul>	
+						<li><a href="https://stencil-fiber-demo.firebaseapp.com/">stencil-fiber-demo.firebaseapp.com</a></li>					
+						<li><a href="https://stencilcomponents.com/component/svg-paths-morphing/">stencilcomponents.com/component/svg-paths-morphing</a></li>
+						<li><a href="https://github.com/matteobortolazzo/fast-morph">github.com/matteobortolazzo/fast-morph</a></li>
+						<li><a href="https://stencilcomponents.com/component/image-comparison-slider/">stencilcomponents.com/component/image-comparison-slider</a></li>
+						<li><a href="https://stencilcomponents.com/component/twitter/">stencilcomponents.com/component/twitter</a></li>					
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				viewDistance: 1,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
