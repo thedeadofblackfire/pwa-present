@@ -52,17 +52,17 @@
 				<section>
 					<h2>Sommaire</h2>
 					<ul>
-						<li>Présentation PWA</li>
+						<li>Présentation</li>
 						<li>Fonctionnalités PWA</li>
 						<li>Navigateurs compatibles</li>
 						<li>Retours d'expériences</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Présentation PWA</h2>
+					<h2>Présentation</h2>
 					<ul>						
 						<li>Une application performante quasi-native</li>
-						<li>Installation instantanée sans téléchargement et sans contrainte des Stores</li> 
+						<li>Installation instantanée sans téléchargement et sans contrainte des stores</li> 
 						<li>Boost engagement mobile</li>
 						<li>App First</li>
 						<li>Multi-plateforme</li>
@@ -75,8 +75,9 @@
 						Elles bénéficient de performances remarquables sur les tests lighthouse</p>
 
 						Installation instantanée
-						<p>Les Progressive Web Apps peuvent être installées directement sur l'écran d'accueil de vos utilisateurs de façon instantanée, sans nécessiter de téléchargement et sans avoir besoin de passer par les stores. Aussi leur légèreté incomparable ôte toute contrainte de mémoire sur les devices au moment de l'installation.
-						<br/>Les Progressive Web Apps ne nécessitent pas d'installation pour être consultée, vous permettant ainsi de rendre votre contenu facilement accessible et effaçant ainsi la contrainte de l'installation de l'app et leur redevance!</p>
+						<p>Les Progressive Web Apps peuvent être installées directement sur l'écran d'accueil de vos utilisateurs de façon instantanée, sans nécessiter de téléchargement (et donc la contrainte installation app) et sans avoir besoin de passer par les stores (Adieux la redevance forcée). 
+						<br/>Aussi leur légèreté incomparable ôte toute contrainte de mémoire sur les devices au moment de l'installation.
+						<br/>Les Progressive Web Apps ne nécessitent pas d'installation pour être consultée, vous permettant ainsi de rendre votre contenu facilement accessible !</p>
 						
 						
 						Boost votre engagement mobile
@@ -87,7 +88,7 @@
 						<p>Pensées initialement pour le mobile, les Progressive Web Apps offrent une expérience utilisateur parfaite, en ramenant les codes du développement mobile sur tous les autres types d'écran.</p>
 
 						Multi-plateforme
-						<p>Les Progressive Web Apps sont multi plateforme. Elles s'adaptent parfaitement au type d'écran sur lequel elles sont utilisées: mobile, tablette ou desktop. Aussi bien en terme de design que de fonctionnalités.</p>
+						<p>Elles sont donc multi-plateforme. Elles s'adaptent parfaitement au type d'écran sur lequel elles sont utilisées: mobile, tablette ou desktop. Aussi bien en terme de design que de fonctionnalités.</p>
 
 						Visibilité
 						<p>Augmentez la visibilité de votre business grâce à la présence de votre application sur les moteurs de recherche.Optimisez votre SEO et profitez d'une découvrabilité incomparable à celle proposée par les stores.</p>
@@ -103,7 +104,7 @@
 					</ul>
 					<aside class="notes">
 					Les Progressive Web Apps réinventent les Apps Natives et les sites Web en s'accompagnant de plusieurs technologies W3C normées
-					qui permet d'offrir des fonctionnalités qui étaient jusque là réservées uniquement aux apps natives.
+					qui permet d'offrir des fonctionnalités qui étaient jusque là réservées uniquement aux applications natives.
 					</aside>
 				</section>				
 				<section>
@@ -116,10 +117,11 @@
 						<li>Push Notifications</li>
 					</ul>
 					<aside class="notes">
-					Expérience utilisateur avancée & Fonctionnement hors ligne
-					<br/>L'atout n°1 des Progressive Web Apps face au Web Apps classiques est indéniablement l'expérience utilisateur exceptionnelle qu'elles offrent. 
-					<br/>L'utilisation de Service Workers, élement clé des PWA, permet aux développeurs de PWAs d'y intégrer de nombreuses fonctionnalités avancées. 
-					<br/>Le Service Worker est un script installé dans le navigateur à la première utilisation de la PWA et effectue ensuite les tâches qui lui sont assignées de manière indépendante. 							
+					L'atout n°1 des Progressive Web Apps face au Web Apps classiques est indéniablement l'expérience utilisateur exceptionnelle qu'elles offrent. 
+					<br/><br/>L'utilisation de Service Workers, élement clé des PWA, permet aux développeurs de PWAs d'y intégrer de nombreuses fonctionnalités avancées que je vais décrire rapidement juste après. 
+					<br/><br/>Le Service Worker est un script installé dans le navigateur à la première utilisation de l'appli PWA et effectue ensuite les tâches qui lui sont assignées de manière indépendante ;
+					peu importe que le navigateur soit ouvert, en tâche de fond ou fermé.
+					<br/><br/>HTTPS requis
 					</aside>
 				</section>
 				<section>
@@ -127,8 +129,9 @@
 					<h3 style="margin-top:120px"><img id="logox" src="img/cm-on-bg-sync.png" width="80%" class="plain" /></h3>
 					<aside class="notes">
 						Background Synchronization
-						<p>Comme nous l'avons dit, le Service Worker permet de construire des fonctionnalités avancées comme la synchronisation en arrière plan, permettant l'affichage direct des données à jour à l'arrivée de l'utilisateur (grâce à la mise à jour régulière de ces données en arrière plan). La synchronisation permet donc d'offrir une expérience utilisateur extrêmement fluide en augmentant considérablement la rapidité d'exécution de l'application. 
-						<br/>Pour permettre de faire de la navigation en mode hors ligne efficace qui capture les requêtes ajax pour les rejouer au moment du retour à une connectivité réseaux.</p>					
+						<p>Comme nous l'avons dit, le Service Worker permet de construire des fonctionnalités avancées comme la synchronisation en arrière plan, permettant l'affichage direct des données à jour lors de l'arrivée de l'utilisateur (grâce à la mise à jour régulière de ces données en arrière plan). La synchronisation permet donc d'offrir une expérience utilisateur extrêmement fluide en augmentant considérablement la rapidité d'exécution de l'application. 
+						<!--<br/>Pour permettre de faire de la navigation en mode hors ligne efficace qui capture les requêtes ajax pour les rejouer au moment du retour à une connectivité réseaux.-->					
+						</p>
 						<p>Présentation d'un schéma simplifié, plusieurs chemins sont possibles pour garantir une application à jour avant que l'utilisateur arrive sur l'app</p>
 					</aside>
 				</section>				
@@ -138,7 +141,7 @@
 					<aside class="notes">
 						Offline Browsing
 						<p>L'accessibilité hors ligne quand à elle s'appuie également sur le Service Worker qui, une fois installé dans le navigateur va gérer la mise en cache des fichiers de l'app, et intercepter les requêtes réseau tel un proxy puis effectuer des actions appropriées selon que le réseau soit disponible ou non. 
-						<br/>Cette fonctionnalité permet à la fois de permettre la consultation de l'application sans connexion, mais aussi de profiter d’une expérience utilisateur améliorée puisque, même avec une connexion à Internet, certains fichiers n’auront plus besoin d’être chargés depuis le serveur web, puisqu’ils seront déjà stockés localement.</p>						
+						<br/><br/>Cette fonctionnalité permet à la fois de permettre la consultation de l'application sans connexion, mais aussi de profiter d’une expérience utilisateur améliorée puisque, même avec une connexion à Internet, certains fichiers n’auront plus besoin d’être chargés depuis le serveur web, puisqu’ils seront déjà stockés localement.</p>						
 					</aside>
 				</section>
 				<section>
@@ -147,7 +150,8 @@
 					<aside class="notes">
 						Web Push Notifications
 						<p>Parmi d'autres tâches qu'ils accomplissent, les Service Worker sont aussi un rouage essentiel pour la réception des notifications push dans votre PWA.
-						<br/>Votre PWA peut recevoir des notifications push sans l'installation d'une application native et valable également sur le desktop. Cette fonctionnalité est prise en charge par la majorité des navigateurs Web récents. Pour Chrome, Firefox et Opera, les notifications push sont fournies par Firebase, la plate-forme de Google. Pour Safari, les notifications sont fournies par APNs, la plate-forme d'Apple.</p>						
+						<br/><br/>Votre PWA peut recevoir des notifications push sans l'installation d'une application native et valable également sur le desktop. 
+						<br/><br/>Cette fonctionnalité est prise en charge par la majorité des navigateurs Web récents. Pour Chrome, Firefox et Opera, les notifications push sont fournies par Firebase, la plate-forme de Google. Pour Safari, les notifications sont fournies par APNs, la plate-forme d'Apple.</p>						
 					</aside>
 				</section>
 				<section>
@@ -155,16 +159,16 @@
 					<p style="margin-top:60px">permet d'installer son application web mobile/desktop directement sur l'écran d'accueil de l'appareil de l'utilisateur</p>	
 					<aside class="notes">
 						Une autre particularité des PWA est que bien qu'elles s'exécutent via un navigateur, elles peuvent être installées directement sur l'écran d'accueil de l'utilisateur et qu’elles offrent une expérience sur un plein écran immersif.  
-						<br/>Ces deux comportements sont rendus possible grâce à un fichier JSON appelé le Manifeste, spécificié établie par le W3C, qui est en fait un fichier descriptif qui permet aux développeurs de contrôler la façon dont la Progressive Web App va se comporter. 				
+						<br/><br/>Ces deux comportements sont rendus possible grâce à un fichier JSON appelé le Manifeste, spécification établie par le W3C, qui est en fait un fichier descriptif qui permet aux développeurs de contrôler la façon dont la Progressive Web App va se comporter. 				
 					</aside>
 				</section>	
 				<section>
 					<h2>Manifest.json</h2>
 					<img id="logox" src="img/manifest_json.jpg" width="65%" class="plain" />
 					<aside class="notes">
-						- Le Manifeste JSON va donc permettre de sauvegarder l’application sur l’écran d'accueil "Home screen" d’un appareil à partir du navigateur. L’app disposera alors d’une icône et un nom unique, préalablement choisi dans le Manifeste. 
-						<br/>- Le Manifeste permet également l’affichage d’un écran de lancement dit "splashscreen" que l’utilisateur verra à l’ouverture de l’application, pendant le téléchargement des données, ou leur récupération à partir du cache. 						
-						<br/>- En plus, Il contient des méta informations nécessaires à l'indexation de votre app dans un store comme google play ou windows store.
+						Le Manifeste JSON va donc permettre de sauvegarder l’application sur l’écran d'accueil "Home screen" d’un appareil à partir du navigateur. L’app disposera alors d’une icône et un nom unique, préalablement choisi dans le Manifeste. 
+						<br/><br/>Le Manifeste permet également l’affichage d’un écran de lancement dit "splashscreen" que l’utilisateur verra à l’ouverture de l’application, pendant le téléchargement des données, ou leur récupération à partir du cache. 						
+						<br/><br/>En plus, Il contient des méta informations nécessaires à l'indexation de votre app dans un store comme google play ou windows store pour mettre en avant une stratégie cross platform.
 					</aside>
 				</section>	
 				<section>
@@ -179,9 +183,9 @@
 					<p>permet la compression des en-têtes, une gestion intelligente pour la diffusion des paquets, la priorisation et la parallélisation des requêtes.</p>
 					<h3><img id="logox" src="img/http2.png" width="50%" class="plain" /></h3>
 					<aside class="notes">
-						Idéalement, votre PWA est servie en HTTP/2. 
-						<br/>La dernière et puissante version du protocole http. HTTP/2 permet la compression des en-têtes, une gestion intelligente pour la diffusion des paquets, la priorisation et la parallélisation des requêtes. 
-						<br/>Cela accélère le téléchargement des pages et réduit la latence.
+						Idéalement, votre PWA est servie en HTTP/2 : La dernière et puissante version du protocole http. 
+						<br/><br/>HTTP/2 permet la compression des en-têtes, une gestion intelligente pour la diffusion des paquets, la priorisation et la parallélisation des requêtes. 
+						<br/><br/>Cela accélère sensiblement le téléchargement des pages et réduit la latence.
 					</aside>
 				</section>
 				<section>
@@ -199,11 +203,13 @@
 					<hr>
 					
 					<p>Jusqu’il y a peu de temps, le seul moyen de manipuler des images et videos sur des devices mobile était d’utiliser un élément HTML standard qui permettait de lancer des applications fournissant des images, comme l’appareil photo. Il n’y avait donc pas d’autre alternative que de quitter la Webapp. 
-					<br/>Aujourd’hui la “Media Capture API” permettent aux Webapps d’avoir accès directement aux flux audio et video du device (c’est à dire camera et micro). C’est flux sont lisibles et manipulables depuis la Webapp. Il est donc possible par exemple de prendre une photo, d’enregistrer une video sans quitter le navigateur. </p>
+					<br/>Aujourd’hui la “Media Capture API” permettent aux Webapps d’avoir accès directement aux flux audio et video du device (c’est à dire la camera et le micro).
+					<br/> Ces flux sont lisibles et manipulables depuis la Webapp. Il est donc possible par exemple de prendre une photo, d’enregistrer une video sans quitter le navigateur. </p>
 					<hr>
  
-					<p>Les Progressive Web Apps ont également la possibilité de communiquer avec des appareils Bluetooth de manière sécurisée. Jusque là réservée aux apps natives, l’utilisation du Bluetooth sur le web est rendue possible grâce à l’API Web Bluetooth.  
-					<br/>Cette API rend donc possible la communication entre une application web et un dispositif Bluetooth: l’application demande au navigateur d’afficher une liste de périphériques Bluetooth à proximité, et l’utilisateur choisit un périphériques ou ferme la boîte de dialogue. Afin d’éviter tout risques en terme de sécurité, pour pouvoir utiliser l’API Web Bluetooth, l’application doit forcément fonctionner sous HTTPS. 
+					<p>Les Progressive Web Apps ont également la possibilité de communiquer maintenant avec des appareils Bluetooth de manière sécurisée.
+					<br/>Jusque là réservée aux apps natives, l’utilisation du Bluetooth sur le web est rendue possible grâce à l’API Web Bluetooth.  
+					<br/>L’application demande au navigateur d’afficher une liste de périphériques Bluetooth à proximité, et l’utilisateur choisit un périphériques ou ferme la boîte de dialogue. Afin d’éviter tout risques en terme de sécurité, pour pouvoir utiliser l’API Web Bluetooth, l’application doit forcément fonctionner sous HTTPS. 
 					<br/>Elle permet également de se connecter à des objets connectés tel que des beacons.</p>
 				
 					</aside>
@@ -211,13 +217,14 @@
 				<section>
 					<h2>Navigateurs compatibles</h2>
 					<ul>
-						<li>Support natif : Chrome, Opera</li>
+						<li>Support natif : Chrome, Opera, Futur Edge</li>
 						<li>Support partiel : Edge, Firefox
 						<li>Safari : une première implémentation bridée</i>						
 					</ul>
 					<img src="img/tableau_chrome.png" width="50%" class="plain" />
 					<aside class="notes">
-						Support de navigateurs natifs en desktop et en mobile : Edge en bonne position avec le tournant politique de microsoft vers le PWA sur son store (et oui!)
+						Support de navigateurs natifs en desktop et en mobile : Edge en bonne position avec le tournant politique de microsoft vers le PWA sur son store 
+						et l'adaptation du futur Edge du moteur chromium (et oui!)
 						<br/>Firefox : background sync pas encore implémenté
 						<br/>et le mauvais élève reste safari, qui craint pour son store mais est contraint d'implémenter PWA face à la demande et la concurrence
 					</aside>
